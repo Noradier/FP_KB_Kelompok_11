@@ -4,13 +4,10 @@ using UnityEngine;
 
 public class Player : Entity
 {
-    [SerializeField] private float time;
-    [SerializeField] private bool isMoving;
-    [SerializeField] private Vector2 moveCoordinate;
-
     public override void Start()
     {
         base.Start();
+        positionCorrection();
         isMoving = false;
     }
 
@@ -27,6 +24,7 @@ public class Player : Entity
         }
     }
 
+    // Input player, gerak atas bawah kiri kanan.
     private void playerInput()
     {
         int M = levelMap.getM();
@@ -63,33 +61,5 @@ public class Player : Entity
                 isMoving = true;
             }
         }
-    }
-
-    private void initMovement(float time, Vector2 moveCoordinate)
-    {
-        this.time = time;
-        this.moveCoordinate = moveCoordinate;
-        isMoving = true;
-    }
-
-    private void move()
-    {
-        float deltaTime = Time.deltaTime;
-        transform.Translate(new Vector3(moveCoordinate.x * deltaTime, moveCoordinate.y * deltaTime, 0f));
-        time -= deltaTime;
-        if(time < 0.0f)
-        {
-            positionCorrection();
-            isMoving = false;
-        }
-    }
-
-    private void positionCorrection()
-    {
-        int x, y;
-        x = (int)transform.position.x;
-        y = (int)transform.position.y;
-
-        setCoordinate(x, y);
     }
 }

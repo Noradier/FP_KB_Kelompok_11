@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Map : MonoBehaviour
+public class Map
 {
     private int M, N, size;
     private int[,] graph;   // Graph, direpresentasi dalam bentuk adjacency matrix
@@ -13,32 +13,155 @@ public class Map : MonoBehaviour
         this.M = M;
         this.N = N;
         size = M * N;
-        initGraph(M, N);
+        initGraph();
     }
 
     // Inisiasi graph: adjacency matrix dibuat dan diisi dengan 0 untuk semua nilai.
-    private void initGraph(int M, int N)
+    private void initGraph()
     {
         graph = new int[size, size];
-        for (int i = 0; i < size; i++)
-            for (int j = 0; j < size; j++)
-                graph[i, j] = 0;
+
+        for(int i=0; i<size; i++)
+        {
+            if(i < M)
+            {
+                if(i%M == 0)
+                {
+                    addEdge(i, i + 1);
+                    addEdge(i, i + M);
+                }
+                else if((i+1)%M == 0)
+                {
+                    addEdge(i, i - 1);
+                    addEdge(i, i + M);
+                }
+                else
+                {
+                    addEdge(i, i + 1);
+                    addEdge(i, i - 1);
+                    addEdge(i, i + M);
+                }
+            }
+            else if(i + M > size - 1)
+            {
+                if (i % M == 0)
+                {
+                    addEdge(i, i + 1);
+                    addEdge(i, i - M);
+                }
+                else if ((i + 1) % M == 0)
+                {
+                    addEdge(i, i - 1);
+                    addEdge(i, i - M);
+                }
+                else
+                {
+                    addEdge(i, i + 1);
+                    addEdge(i, i - 1);
+                    addEdge(i, i - M);
+                }
+            }
+            else
+            {
+                if (i % M == 0)
+                {
+                    addEdge(i, i + 1);
+                    addEdge(i, i + M);
+                    addEdge(i, i - M);
+                }
+                else if ((i + 1) % M == 0)
+                {
+                    addEdge(i, i - 1);
+                    addEdge(i, i + M);
+                    addEdge(i, i - M);
+                }
+                else
+                {
+                    addEdge(i, i + 1);
+                    addEdge(i, i - 1);
+                    addEdge(i, i + M);
+                    addEdge(i, i - M);
+                }
+            }
+        }
     }
 
-    // Menambahkan edge pada graph
-    public void addEdge(int i, int j)
+    // Menambahkan edge pada graph.
+    private void addEdge(int i, int j)
     {
         graph[i, j] = 1;
-        graph[j, i] = 1;
     }
 
-    public void addEdge(int[,] arr)
+    // Menghapus vertex i sehingga tidak ada vertex yang bisa memasuki vertex i.
+    public void deleteVertex(int i)
     {
-        for (int i = 0; i < size; i++)
+        if (i < M)
         {
-            for (int j = 0; j < size; j++)
-                graph[i, j] = arr[i, j];
+            if (i % M == 0)
+            {
+                deleteEdge(i, i + 1);
+                deleteEdge(i, i + M);
+            }
+            else if ((i + 1) % M == 0)
+            {
+                deleteEdge(i, i - 1);
+                deleteEdge(i, i + M);
+            }
+            else
+            {
+                deleteEdge(i, i + 1);
+                deleteEdge(i, i - 1);
+                deleteEdge(i, i + M);
+            }
         }
+        else if (i + M > size - 1)
+        {
+            if (i % M == 0)
+            {
+                deleteEdge(i, i + 1);
+                deleteEdge(i, i - M);
+            }
+            else if ((i + 1) % M == 0)
+            {
+                deleteEdge(i, i - 1);
+                deleteEdge(i, i - M);
+            }
+            else
+            {
+                deleteEdge(i, i + 1);
+                deleteEdge(i, i - 1);
+                deleteEdge(i, i - M);
+            }
+        }
+        else
+        {
+            if (i % M == 0)
+            {
+                deleteEdge(i, i + 1);
+                deleteEdge(i, i + M);
+                deleteEdge(i, i - M);
+            }
+            else if ((i + 1) % M == 0)
+            {
+                deleteEdge(i, i - 1);
+                deleteEdge(i, i + M);
+                deleteEdge(i, i - M);
+            }
+            else
+            {
+                deleteEdge(i, i + 1);
+                deleteEdge(i, i - 1);
+                deleteEdge(i, i + M);
+                deleteEdge(i, i - M);
+            }
+        }
+    }
+
+    // Menghapus edge pada graph.
+    private void deleteEdge(int i, int j)
+    {
+        graph[i, j] = 0;
+        graph[j, i] = 0;
     }
 
     public int getM()

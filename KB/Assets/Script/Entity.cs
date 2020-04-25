@@ -6,6 +6,9 @@ using UnityEngine;
 public abstract class Entity : MonoBehaviour
 {
     [SerializeField] protected int x, y, index;
+    [SerializeField] protected float time;
+    [SerializeField] protected bool isMoving;
+    [SerializeField] protected Vector2 moveCoordinate;
     protected Map levelMap;
     // protected Animator anim;
 
@@ -25,11 +28,7 @@ public abstract class Entity : MonoBehaviour
     private void setMap()
     {
         levelMap = new Map(18, 10);
-        levelMap.addEdge(0, 1);
-        levelMap.addEdge(0, 18);
-        levelMap.addEdge(1, 2);
-        levelMap.addEdge(2, 3);
-        levelMap.addEdge(2, 20);
+        levelMap.deleteVertex(19);
     }
 
     public void setCoordinate(int x, int y)
@@ -55,4 +54,34 @@ public abstract class Entity : MonoBehaviour
         return y;
     }
 
+    // Inisialisasi pergerakan objek.
+    protected void initMovement(float time, Vector2 moveCoordinate)
+    {
+        this.time = time;
+        this.moveCoordinate = moveCoordinate;
+        isMoving = true;
+    }
+
+    // Fungsi pergerakan objek.
+    protected void move()
+    {
+        float deltaTime = Time.deltaTime;
+        transform.Translate(new Vector3(moveCoordinate.x * deltaTime, moveCoordinate.y * deltaTime, 0f));
+        time -= deltaTime;
+        if (time < 0.0f)
+        {
+            positionCorrection();
+            isMoving = false;
+        }
+    }
+
+    // Koreksi digit akhir posisi objek dan update index objek.
+    protected void positionCorrection()
+    {
+        int x, y;
+        x = (int)transform.position.x;
+        y = (int)transform.position.y;
+
+        setCoordinate(x, y);
+    }
 }
