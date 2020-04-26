@@ -28,14 +28,20 @@ public abstract class Entity : MonoBehaviour
     private void setMap()
     {
         levelMap = new Map(18, 10);
-        levelMap.deleteVertex(19);
-        levelMap.deleteVertex(21);
-        levelMap.deleteVertex(23);
-        levelMap.deleteVertex(25);
-        levelMap.deleteVertex(28);
-        levelMap.deleteVertex(30);
-        levelMap.deleteVertex(32);
-        levelMap.deleteVertex(34);
+        for(int i=1; i<8; i += 2)
+        {
+            levelMap.deleteVertex(i + 18);
+            levelMap.deleteVertex(i + 54);
+            levelMap.deleteVertex(i + 108);
+            levelMap.deleteVertex(i + 144);
+        }
+        for(int i=10; i<17; i += 2)
+        {
+            levelMap.deleteVertex(i + 18);
+            levelMap.deleteVertex(i + 54);
+            levelMap.deleteVertex(i + 108);
+            levelMap.deleteVertex(i + 144);
+        }
     }
 
     public void setCoordinate(int x, int y)

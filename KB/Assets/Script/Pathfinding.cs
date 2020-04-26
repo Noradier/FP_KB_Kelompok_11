@@ -18,8 +18,11 @@ public class Pathfinding
         this.levelMap = levelMap;
     }
 
-    public void astar(int start, int goal)
+    public int astar(int start, int goal)
     {
+        if (start == goal)
+            return start;
+
         List<Node> openList = new List<Node>();
         List<Node> closeList = new List<Node>();
         openList.Add(new Node(start, 0, 0));
@@ -36,11 +39,9 @@ public class Pathfinding
             int from, M, N;
             from = current.getIndex();
             if (from == goal)
-                break;
+                return constructPath(closeList, current, start);
             M = levelMap.getM();
             N = levelMap.getN();
-
-            
             
             if (from < (M * N) - 1)
                 checkPath(openList, closeList, current, from, from + 1, goal);
@@ -54,12 +55,7 @@ public class Pathfinding
             if (from > M - 1)
                 checkPath(openList, closeList, current, from, from - M, goal);
         }
-        string message = "";
-        foreach (Node node in closeList)
-        {
-            message = message + "[" + node.getFCost() + ", " + node.getGCost() + ", " + node.getIndex() + "]";
-        }
-        Debug.Log(message);
+        return start;
     }
 
     private void checkPath(List<Node> openList, List<Node> closeList, Node current, int from, int to, int goal)
@@ -68,7 +64,7 @@ public class Pathfinding
         if (levelMap.getGraph(from, to) == 0 || checkClose != null)
             return;
 
-        int gCost = current.getGCost() + 10;
+        int gCost = current.getGCost() + 1;
         int hCost = calcH(to, goal);
         Node newPath = new Node(to, from, gCost, hCost),
              oldPath = openList.Find(x => x.getIndex() == to);
@@ -85,8 +81,17 @@ public class Pathfinding
             openList[index].setParent(from);
             openList.Sort(new NodeComparer());
         }
-
         return;
+    }
+
+    private int constructPath(List<Node> closeList, Node current, int start)
+    {
+        while(current.getParent() != start)
+        {
+            int parentIndex = closeList.FindIndex(x => x.getIndex() == current.getParent());
+            current = closeList[parentIndex];
+        }
+        return current.getIndex();
     }
 
     private int calcH(int start, int goal)
@@ -96,14 +101,6 @@ public class Pathfinding
             y = Mathf.Abs((start / M) - (goal / M));
 
         return x + y;
-    }
-
-    public void addNode(Node node)
-    {
-        open.Add(node);
-        NodeComparer nodeComparer = new NodeComparer();
-        open.Sort(nodeComparer);
-        toString();
     }
 
     public class NodeComparer : IComparer<Node>
@@ -133,28 +130,6 @@ public class Pathfinding
                     // Jika kedua node memiliki FCost yang sama, GCost yang lebih tinggi dialah yang lebih besar.
                     return a.getGCost().CompareTo(b.getGCost());
             }
-        }
-    }
-
-    public void toString()
-    {
-        string message = "";
-        foreach(Node node in open)
-        {
-            message = message + "[" + node.getFCost() + ", " + node.getGCost() + ", " + node.getIndex() + "]";
-        }
-        Node ex = open.Find(x => x.getIndex() == 30);
-        if(ex != null)
-        {
-            Debug.Log(message + " Found!");
-        }
-        else
-        {
-            int index = open.FindIndex(x => x.getIndex() == 0);
-            open[index].setFCost(0, 0);
-            Node current = open[index];
-            //open.Remove(current);
-            Debug.Log(message + " Not Found! Remove " + "[" + current.getFCost() + ", " + current.getGCost() + ", " + current.getIndex() + "] " + open.Count);
         }
     }
 }
