@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class Enemy : Entity
 {
+    private Player player;
     private Pathfinding pathfinding;
     private int g, h;
 
     public override void Start()
     {
         base.Start();
-        pathfinding = new Pathfinding();
+        player = FindObjectOfType<Player>();
+        pathfinding = new Pathfinding(levelMap);
         positionCorrection();
         g = 0; h = 0;
         isMoving = false;
@@ -68,6 +70,7 @@ public class Enemy : Entity
                 break;
         }
         isMoving = true;
-        pathfinding.addNode(new Node(index, g, h));
+        //pathfinding.addNode(new Node(index, g, h));
+        pathfinding.astar(index, player.getIndex());
     }
 }

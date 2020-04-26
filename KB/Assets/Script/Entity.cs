@@ -29,6 +29,13 @@ public abstract class Entity : MonoBehaviour
     {
         levelMap = new Map(18, 10);
         levelMap.deleteVertex(19);
+        levelMap.deleteVertex(21);
+        levelMap.deleteVertex(23);
+        levelMap.deleteVertex(25);
+        levelMap.deleteVertex(28);
+        levelMap.deleteVertex(30);
+        levelMap.deleteVertex(32);
+        levelMap.deleteVertex(34);
     }
 
     public void setCoordinate(int x, int y)
@@ -52,6 +59,11 @@ public abstract class Entity : MonoBehaviour
     public int getY()
     {
         return y;
+    }
+
+    public int getIndex()
+    {
+        return index;
     }
 
     // Inisialisasi pergerakan objek.

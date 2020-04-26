@@ -41,4 +41,15 @@ public class Node
     {
         return gCost;
     }
+
+    public void setFCost(int gCost, int hCost)
+    {
+        this.gCost = gCost;
+        fCost = gCost + hCost;
+    }
+
+    public void setParent(int parent)
+    {
+        this.parent = parent;
+    }
 }
