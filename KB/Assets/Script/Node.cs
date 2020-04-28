@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class Node
 {
+    // Digunakan sebagai objek node dalam list yang digunakan oleh fungsi A* class Pathfinding.
+
     private int index, parent, fCost, gCost;
     
+    // Constructor untuk start node.
     public Node(int index, int gCost, int hCost)
     {
         this.index = index;
@@ -14,6 +17,7 @@ public class Node
         fCost = gCost + hCost;
     }
 
+    // Constructor umum untuk node selain start node.
     public Node(int index, int parent, int gCost, int hCost)
     {
         this.index = index;
@@ -21,6 +25,8 @@ public class Node
         this.gCost = gCost;
         fCost = gCost + hCost;
     }
+
+    // Kumpulan getter dan setter.
 
     public int getIndex()
     {

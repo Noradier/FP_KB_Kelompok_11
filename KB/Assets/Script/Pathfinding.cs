@@ -4,20 +4,14 @@ using UnityEngine;
 
 public class Pathfinding
 {
-    private List<Node> open;
     private Map levelMap;
-
-    public Pathfinding()
-    {
-        open = new List<Node>();
-        open.Add(new Node(0, 100, 100));
-    }
 
     public Pathfinding(Map levelMap)
     {
         this.levelMap = levelMap;
     }
 
+    // Pathfinding menggunakan algoritma A*
     public int astar(int start, int goal)
     {
         if (start == goal)
@@ -27,14 +21,11 @@ public class Pathfinding
         List<Node> closeList = new List<Node>();
         openList.Add(new Node(start, 0, 0));
 
-        int gCost = 0;
-
         while(openList.Count > 0)
         {
             Node current = openList[0];
             openList.Remove(current);
             closeList.Add(current);
-            gCost += 10;
 
             int from, M, N;
             from = current.getIndex();
@@ -58,6 +49,7 @@ public class Pathfinding
         return start;
     }
 
+    // Fungsi suplemen A* yang digunakan untuk memeriksa tetangga dari node current
     private void checkPath(List<Node> openList, List<Node> closeList, Node current, int from, int to, int goal)
     {
         Node checkClose = closeList.Find(x => x.getIndex() == to);
@@ -84,6 +76,9 @@ public class Pathfinding
         return;
     }
 
+    // Fungsi suplemen A* yang digunakan untuk membangun jalan bagi objek ke target tujuan.
+    // Dikerjakan secara backtrack: berjalan dari goal kembali ke start.
+    // Fungsi mengembalikan nilai index tetangga node yang sekarang ditempati objek.
     private int constructPath(List<Node> closeList, Node current, int start)
     {
         while(current.getParent() != start)
@@ -94,6 +89,7 @@ public class Pathfinding
         return current.getIndex();
     }
 
+    // Fungsi heuristic Manhattan
     private int calcH(int start, int goal)
     {
         int M = levelMap.getM(),
@@ -103,6 +99,8 @@ public class Pathfinding
         return x + y;
     }
 
+    // Class yang mengimplementasi interface IComparer
+    // Digunakan untuk membantu mengurutkan openList dalam astar.
     public class NodeComparer : IComparer<Node>
     {
         public int Compare(Node a, Node b)

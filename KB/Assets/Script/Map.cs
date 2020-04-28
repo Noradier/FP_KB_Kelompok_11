@@ -164,6 +164,8 @@ public class Map
         graph[j, i] = 0;
     }
 
+    // Kumpulan getter dan setter.
+
     public int getM()
     {
         return M;

@@ -29,6 +29,7 @@ public class Enemy : Entity
         }
     }
 
+    // Input dasar enemy.
     private void enemyInput()
     {
         int nextPath = pathfinding.astar(index, player.getIndex());

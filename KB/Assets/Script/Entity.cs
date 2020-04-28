@@ -44,34 +44,6 @@ public abstract class Entity : MonoBehaviour
         }
     }
 
-    public void setCoordinate(int x, int y)
-    {
-        this.x = x;
-        this.y = y;
-        index = x + y * levelMap.getM();
-        transform.position = new Vector3(x + 0.5f, y + 0.5f, transform.position.z);
-    }
-
-    public void setLevelMap(Map levelMap)
-    {
-        this.levelMap = levelMap;
-    }
-
-    public int getX()
-    {
-        return x;
-    }
-
-    public int getY()
-    {
-        return y;
-    }
-
-    public int getIndex()
-    {
-        return index;
-    }
-
     // Inisialisasi pergerakan objek.
     protected void initMovement(float time, Vector2 moveCoordinate)
     {
@@ -101,5 +73,35 @@ public abstract class Entity : MonoBehaviour
         y = (int)transform.position.y;
 
         setCoordinate(x, y);
+    }
+
+    // Kumpulan getter dan setter.
+
+    public void setCoordinate(int x, int y)
+    {
+        this.x = x;
+        this.y = y;
+        index = x + y * levelMap.getM();
+        transform.position = new Vector3(x + 0.5f, y + 0.5f, transform.position.z);
+    }
+
+    public void setLevelMap(Map levelMap)
+    {
+        this.levelMap = levelMap;
+    }
+
+    public int getX()
+    {
+        return x;
+    }
+
+    public int getY()
+    {
+        return y;
+    }
+
+    public int getIndex()
+    {
+        return index;
     }
 }
