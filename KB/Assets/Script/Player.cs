@@ -8,6 +8,7 @@ public class Player : Entity
     {
         base.Start();
         positionCorrection();
+        movePos = new Vector2(0.0f, -1.0f);
         isMoving = false;
     }
 
@@ -15,13 +16,9 @@ public class Player : Entity
     public override void Update()
     {
         if (isMoving)
-        {
             move();
-        }
         else
-        {
             playerInput();
-        }
     }
 
     // Input player, gerak atas bawah kiri kanan.
@@ -34,6 +31,7 @@ public class Player : Entity
             if(levelMap.getGraph(index, index + 1) == 1)
             {
                 initMovement(0.5f, new Vector2(2.0f, 0.0f));
+                movePos = new Vector2(1.0f, 0.0f);
                 isMoving = true;
             }
         }
@@ -42,6 +40,7 @@ public class Player : Entity
             if(levelMap.getGraph(index, index - 1) == 1)
             {
                 initMovement(0.5f, new Vector2(-2.0f, 0.0f));
+                movePos = new Vector2(-1.0f, 0.0f);
                 isMoving = true;
             }
         }
@@ -50,6 +49,7 @@ public class Player : Entity
             if (levelMap.getGraph(index, index + M) == 1)
             {
                 initMovement(0.5f, new Vector2(0.0f, 2.0f));
+                movePos = new Vector2(0.0f, 1.0f);
                 isMoving = true;
             }
         }
@@ -58,8 +58,12 @@ public class Player : Entity
             if (levelMap.getGraph(index, index - M) == 1)
             {
                 initMovement(0.5f, new Vector2(0.0f, -2.0f));
+                movePos = new Vector2(0.0f, -1.0f);
                 isMoving = true;
             }
         }
+
+        anim.SetFloat("moveX", movePos.x);
+        anim.SetFloat("moveY", movePos.y);
     }
 }

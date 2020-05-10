@@ -8,14 +8,14 @@ public abstract class Entity : MonoBehaviour
     [SerializeField] protected int x, y, index;
     [SerializeField] protected float time;
     [SerializeField] protected bool isMoving;
-    [SerializeField] protected Vector2 moveCoordinate;
+    [SerializeField] protected Vector2 moveCoordinate, movePos;
     protected Map levelMap;
-    // protected Animator anim;
+    protected Animator anim;
 
     // Start is called before the first frame update
     public virtual void Start()
     {
-        // anim = GetComponent<Animator>();
+        anim = GetComponent<Animator>();
         setMap();
     }
 
@@ -53,7 +53,7 @@ public abstract class Entity : MonoBehaviour
     }
 
     // Fungsi pergerakan objek.
-    protected void move()
+    protected virtual void move()
     {
         float deltaTime = Time.deltaTime;
         transform.Translate(new Vector3(moveCoordinate.x * deltaTime, moveCoordinate.y * deltaTime, 0f));
@@ -77,19 +77,6 @@ public abstract class Entity : MonoBehaviour
 
     // Kumpulan getter dan setter.
 
-    public void setCoordinate(int x, int y)
-    {
-        this.x = x;
-        this.y = y;
-        index = x + y * levelMap.getM();
-        transform.position = new Vector3(x + 0.5f, y + 0.5f, transform.position.z);
-    }
-
-    public void setLevelMap(Map levelMap)
-    {
-        this.levelMap = levelMap;
-    }
-
     public int getX()
     {
         return x;
@@ -103,5 +90,18 @@ public abstract class Entity : MonoBehaviour
     public int getIndex()
     {
         return index;
+    }
+
+    public void setCoordinate(int x, int y)
+    {
+        this.x = x;
+        this.y = y;
+        index = x + y * levelMap.getM();
+        transform.position = new Vector3(x + 0.5f, y + 0.5f, transform.position.z);
+    }
+
+    public void setLevelMap(Map levelMap)
+    {
+        this.levelMap = levelMap;
     }
 }

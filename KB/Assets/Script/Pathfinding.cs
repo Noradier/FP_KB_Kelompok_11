@@ -90,7 +90,7 @@ public class Pathfinding
     }
 
     // Fungsi heuristic Manhattan
-    private int calcH(int start, int goal)
+    public int calcH(int start, int goal)
     {
         int M = levelMap.getM(),
             x = Mathf.Abs((start % M) - (goal % M)),
