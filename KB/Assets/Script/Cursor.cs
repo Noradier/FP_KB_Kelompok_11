@@ -6,7 +6,6 @@ public class Cursor : MonoBehaviour
 {
     private int choice;
     private Animator anim;
-    private GameManager gameManager;
 
     void Start()
     {
@@ -14,7 +13,6 @@ public class Cursor : MonoBehaviour
         anim = GetComponent<Animator>();
         anim.SetFloat("moveX", 0.0f);
         anim.SetFloat("moveY", 0.0f);
-        gameManager = FindObjectOfType<GameManager>();
     }
 
     // Update is called once per frame
@@ -27,7 +25,7 @@ public class Cursor : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Return))
         {
-            gameManager.loadStage1();
+            GameManager.changeScene(2);
             return;
         }
 

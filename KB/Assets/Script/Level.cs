@@ -2,41 +2,61 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Level
+public abstract class Level : MonoBehaviour
 {
     // Kelas abstrak yang digunakan untuk membangun level.
 
-    protected Map map;    // Level memiliki class Map yang dapat digunakan sebagai koordinat bagi semua GameObject
+    protected Entity player, pocong;    // Entity yang akan dimuat dalam level.
+    protected Map map;                  // Level memiliki class Map yang dapat digunakan sebagai koordinat bagi semua GameObject
 
-    protected abstract void createLevel();
+    public virtual void Start()
+    {
+        player = Resources.Load("Prefabs/Player_Placeholder", typeof(Entity)) as Entity;
+        pocong = Resources.Load("Prefabs/Pocong_Placeholder", typeof(Entity)) as Entity;
+    }
 
-    protected void delete_2x2(int bottomLeft)
+    public static void changeCameraPosition(float x, float y)
+    {
+        GameObject camera = GameObject.FindGameObjectWithTag("MainCamera");
+        float z = camera.transform.position.z;
+
+        if(camera != null)
+            camera.transform.position = new Vector3(x, y, z);
+    }
+
+    // Kumpulan fungsi utilitas untuk membangun/mendesain level.
+
+    // Membuat map MxN
+    protected void createMap(int M, int N)
+    {
+        map = new Map(M, N);
+    }
+
+    // Menghapus distance x height petak dalam bentuk persegi dalam map
+    protected void delete(int bottomLeft, int distance, int height)
     {
         int M = map.getM();
 
-        map.deleteVertex(bottomLeft);
-        map.deleteVertex(bottomLeft + 1);
-        map.deleteVertex(bottomLeft + M);
-        map.deleteVertex(bottomLeft + M + 1);
+        for (int i = 0; i < height; i++)
+            for (int j = 0; j < distance; j++)
+                map.deleteVertex(bottomLeft + j + i * M);
     }
 
-    protected void delete_3x3(int bottomLeft)
-    {
-        int M = map.getM();
+    // Fungsi Spawn GameObject player dan enemy
 
-        map.deleteVertex(bottomLeft);
-        map.deleteVertex(bottomLeft + 1);
-        map.deleteVertex(bottomLeft + 2);
-        map.deleteVertex(bottomLeft + M);
-        map.deleteVertex(bottomLeft + M + 1);
-        map.deleteVertex(bottomLeft + M + 2);
-        map.deleteVertex(bottomLeft + 2 * M);
-        map.deleteVertex(bottomLeft + 2 * M + 1);
-        map.deleteVertex(bottomLeft + 2 * M + 2);
+    protected void spawnPlayer(float x, float y)
+    {
+        if (player == null)
+            return;
+        Entity instance = Instantiate(player, new Vector3(x, y, 0.0f), Quaternion.identity);
+        instance.setLevelMap(map);
     }
 
-    public Map getMap()
+    protected void spawnPocong(float x, float y)
     {
-        return map;
+        if (pocong == null)
+            return;
+        Entity instance = Instantiate(pocong, new Vector3(x, y, 0.0f), Quaternion.identity);
+        instance.setLevelMap(map);
     }
 }
