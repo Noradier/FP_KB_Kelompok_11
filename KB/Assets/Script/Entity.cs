@@ -16,7 +16,6 @@ public abstract class Entity : MonoBehaviour
     public virtual void Start()
     {
         anim = GetComponent<Animator>();
-        setMap();
     }
 
     // Update is called once per frame
