@@ -70,10 +70,12 @@
     <Compile Include="Assets\Script\Level.cs" />
     <Compile Include="Assets\Script\Level1.cs" />
     <Compile Include="Assets\Script\Level2.cs" />
+    <Compile Include="Assets\Script\Level3.cs" />
     <Compile Include="Assets\Script\Map.cs" />
     <Compile Include="Assets\Script\Node.cs" />
     <Compile Include="Assets\Script\Pathfinding.cs" />
     <Compile Include="Assets\Script\Player.cs" />
+    <Compile Include="Assets\Script\StepPoint.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/user/Documents/GitHub/FP_KB_Kelompok_11/KB/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>

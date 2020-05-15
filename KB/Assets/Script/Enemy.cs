@@ -15,4 +15,12 @@ public abstract class Enemy : Entity
         positionCorrection();
         isMoving = false;
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag != "Player")
+            return;
+
+        GameManager.changeScene(5);
+    }
 }

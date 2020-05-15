@@ -9,7 +9,7 @@ public class Level2 : Level
         base.Start();
         createMap(18, 20);
         shapeMap();
-        spawnPlayer(0.5f, 0.5f);
+        spawnPlayer(0);
     }
 
     private void shapeMap()
@@ -41,5 +41,12 @@ public class Level2 : Level
         delete(316, 2, 2);
         delete(319, 2, 2);
         delete(328, 2, 2);
+    }
+
+    public override void decreasePoint()
+    {
+        base.decreasePoint();
+        if (point < 1)
+            GameManager.changeScene(4);
     }
 }

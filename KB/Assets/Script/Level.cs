@@ -2,17 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public abstract class Level : MonoBehaviour
 {
     // Kelas abstrak yang digunakan untuk membangun level.
 
     protected Entity player, pocong;    // Entity yang akan dimuat dalam level.
+    protected StepPoint stepPoint;
     protected Map map;                  // Level memiliki class Map yang dapat digunakan sebagai koordinat bagi semua GameObject
+    [SerializeField] protected int point, M;
 
     public virtual void Start()
     {
         player = Resources.Load("Prefabs/Player_Placeholder", typeof(Entity)) as Entity;
         pocong = Resources.Load("Prefabs/Pocong_Placeholder", typeof(Entity)) as Entity;
+        stepPoint = Resources.Load("Prefabs/Step_Point", typeof(StepPoint)) as StepPoint;
     }
 
     public static void changeCameraPosition(float x, float y)
@@ -30,13 +34,12 @@ public abstract class Level : MonoBehaviour
     protected void createMap(int M, int N)
     {
         map = new Map(M, N);
+        this.M = M;
     }
 
     // Menghapus distance x height petak dalam bentuk persegi dalam map
     protected void delete(int bottomLeft, int distance, int height)
     {
-        int M = map.getM();
-
         for (int i = 0; i < height; i++)
             for (int j = 0; j < distance; j++)
                 map.deleteVertex(bottomLeft + j + i * M);
@@ -44,19 +47,36 @@ public abstract class Level : MonoBehaviour
 
     // Fungsi Spawn GameObject player dan enemy
 
-    protected void spawnPlayer(float x, float y)
+    protected void spawnPlayer(int index)
     {
-        if (player == null)
-            return;
+        float x = (index % M) + 0.5f,
+              y = (index / M) + 0.5f;
+
         Entity instance = Instantiate(player, new Vector3(x, y, 0.0f), Quaternion.identity);
         instance.setLevelMap(map);
     }
 
-    protected void spawnPocong(float x, float y)
+    protected void spawnPocong(int index)
     {
-        if (pocong == null)
-            return;
+        float x = (index % M) + 0.5f,
+              y = (index / M) + 0.5f;
+
         Entity instance = Instantiate(pocong, new Vector3(x, y, 0.0f), Quaternion.identity);
         instance.setLevelMap(map);
+    }
+
+    protected void spawnStepPoint(int index, Level level)
+    {
+        float x = (index % M) + 0.5f,
+              y = (index / M) + 0.5f;
+
+        StepPoint instance = Instantiate(stepPoint, new Vector3(x, y, 0.0f), Quaternion.identity);
+        instance.setLevel(level);
+    }
+
+    // Fungsi untuk mengecek bila semua tempat tujuan telah dikunjungi
+    public virtual void decreasePoint()
+    {
+        point--;
     }
 }
