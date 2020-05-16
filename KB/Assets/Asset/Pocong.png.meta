@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d1bdadb5f37c1ad468644990dada271b
+guid: 24da79afc8f57834ba6836e87d5ade8c
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -81,7 +81,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 640
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -135,9 +135,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 96
-        width: 32
-        height: 32
+        y: 1920
+        width: 640
+        height: 640
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,7 +145,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 61ad7d8e082dc714ebe24c5cc7fe7679
+      spriteID: 8a64c5b45eed3e947adb626336c8fa60
       internalID: 6062958812280367955
       vertices: []
       indices: 
@@ -155,10 +155,10 @@ TextureImporter:
       name: Pocong_1
       rect:
         serializedVersion: 2
-        x: 32
-        y: 96
-        width: 32
-        height: 32
+        x: 640
+        y: 1920
+        width: 640
+        height: 640
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,7 +166,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8f7be3f8d64b67c49bef0d2fafd0ceb5
+      spriteID: 5d4c0fca9d8eda8488fb5fc10ea11538
       internalID: -560284060831214446
       vertices: []
       indices: 
@@ -176,10 +176,10 @@ TextureImporter:
       name: Pocong_2
       rect:
         serializedVersion: 2
-        x: 64
-        y: 96
-        width: 32
-        height: 32
+        x: 1280
+        y: 1920
+        width: 640
+        height: 640
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,7 +187,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 19930737bc77aa74ab61b6d47a4657cd
+      spriteID: 30b35624bdad75043a1afbf20e49322c
       internalID: 820986673238279649
       vertices: []
       indices: 
@@ -198,9 +198,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 64
-        width: 32
-        height: 32
+        y: 1280
+        width: 640
+        height: 640
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -208,7 +208,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f2b96dd191c877f44943009607677c84
+      spriteID: 40ea2436a6e07a646911e3e863e183ea
       internalID: 3307002879149476936
       vertices: []
       indices: 
@@ -218,10 +218,10 @@ TextureImporter:
       name: Pocong_4
       rect:
         serializedVersion: 2
-        x: 32
-        y: 64
-        width: 32
-        height: 32
+        x: 640
+        y: 1280
+        width: 640
+        height: 640
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -229,7 +229,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 344917275fd030a43998ade60c0e9379
+      spriteID: 3880609126b865a41974c5706cf7b80f
       internalID: -4244280116740634390
       vertices: []
       indices: 
@@ -239,10 +239,10 @@ TextureImporter:
       name: Pocong_5
       rect:
         serializedVersion: 2
-        x: 64
-        y: 64
-        width: 32
-        height: 32
+        x: 1280
+        y: 1280
+        width: 640
+        height: 640
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -250,7 +250,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ae6e6de0a516cc642b8d9941b4d21324
+      spriteID: fe5e5e0d15430b3428d928a4f1041bb8
       internalID: -4495182205358722725
       vertices: []
       indices: 
@@ -261,9 +261,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 32
-        width: 32
-        height: 32
+        y: 640
+        width: 640
+        height: 640
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -271,7 +271,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d1f5bd00e3b614d4ba319a38b64382b7
+      spriteID: 9beecb2c5c465a54d814df0d9e252588
       internalID: -6084429292449099934
       vertices: []
       indices: 
@@ -281,10 +281,10 @@ TextureImporter:
       name: Pocong_7
       rect:
         serializedVersion: 2
-        x: 32
-        y: 32
-        width: 32
-        height: 32
+        x: 640
+        y: 640
+        width: 640
+        height: 640
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -292,7 +292,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2ded8eff23b3b754291313e617ebdc00
+      spriteID: faed11814f58420448fcb273c2f7ab73
       internalID: -6373824553751756895
       vertices: []
       indices: 
@@ -302,10 +302,10 @@ TextureImporter:
       name: Pocong_8
       rect:
         serializedVersion: 2
-        x: 64
-        y: 32
-        width: 32
-        height: 32
+        x: 1280
+        y: 640
+        width: 640
+        height: 640
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -313,7 +313,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1b718fc2170b9fa4a867cfd99234b5ed
+      spriteID: 2274836a9cfc62e499c22659d9742290
       internalID: -6875913820051910658
       vertices: []
       indices: 
@@ -325,8 +325,8 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 32
-        height: 32
+        width: 640
+        height: 640
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -334,7 +334,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 07b0f6798461d4b4e94b5c83003427c5
+      spriteID: e80e8d1c95487514b86f522e3ee16c97
       internalID: -2386469776674322866
       vertices: []
       indices: 
@@ -344,10 +344,10 @@ TextureImporter:
       name: Pocong_10
       rect:
         serializedVersion: 2
-        x: 32
+        x: 640
         y: 0
-        width: 32
-        height: 32
+        width: 640
+        height: 640
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -355,7 +355,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9be60ca6dc3c42b4281458dbcac9cbf1
+      spriteID: a0cc165b2d9b3e84f933726ca5c7211b
       internalID: -7572978337949034416
       vertices: []
       indices: 
@@ -365,10 +365,10 @@ TextureImporter:
       name: Pocong_11
       rect:
         serializedVersion: 2
-        x: 64
+        x: 1280
         y: 0
-        width: 32
-        height: 32
+        width: 640
+        height: 640
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -376,7 +376,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4ff2ae1994fb5d144a8c2733ae594dbe
+      spriteID: 8f73aef43fc249f419b8f9d9111097c5
       internalID: 7656534457060028868
       vertices: []
       indices: 
@@ -385,7 +385,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 26de3463e82da3d4eb2ff0fe0695d0b5
+    spriteID: 70e4ab6c57834d14088e32b448d104ae
     internalID: 0
     vertices: []
     indices: 
