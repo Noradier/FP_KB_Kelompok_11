@@ -10,7 +10,42 @@ public class Level3 : Level
         base.Start();
         createMap(36, 20);
         shapeMap();
+        point = 20;
         spawnPlayer(0);
+        spawnPocong(154);
+        spawnPocong(161);
+        spawnPocong(174);
+        spawnPocong(272);
+        spawnPocong(304);
+        spawnPocong(385);
+        spawnPocong(399);
+        spawnPocong(417);
+        spawnPocong(449);
+        spawnPocong(641);
+        spawnPocong(692);
+        spawnSuster(35);
+        spawnSuster(684);
+        spawnSuster(719);
+        spawnStepPoint(2, this);
+        spawnStepPoint(6, this);
+        spawnStepPoint(11, this);
+        spawnStepPoint(15, this);
+        spawnStepPoint(98, this);
+        spawnStepPoint(103, this);
+        spawnStepPoint(130, this);
+        spawnStepPoint(148, this);
+        spawnStepPoint(156, this);
+        spawnStepPoint(188, this);
+        spawnStepPoint(207, this);
+        spawnStepPoint(212, this);
+        spawnStepPoint(368, this);
+        spawnStepPoint(387, this);
+        spawnStepPoint(392, this);
+        spawnStepPoint(544, this);
+        spawnStepPoint(551, this);
+        spawnStepPoint(555, this);
+        spawnStepPoint(571, this);
+        spawnStepPoint(639, this);
     }
 
     private void shapeMap()
@@ -70,6 +105,6 @@ public class Level3 : Level
     {
         base.decreasePoint();
         if (point < 1)
-            GameManager.changeScene(5);
+            GameManager.changeScene(6);
     }
 }

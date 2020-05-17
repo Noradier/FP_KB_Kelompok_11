@@ -7,15 +7,16 @@ public abstract class Level : MonoBehaviour
 {
     // Kelas abstrak yang digunakan untuk membangun level.
 
-    protected Entity player, pocong;    // Entity yang akan dimuat dalam level.
+    protected Entity player, pocong, suster;    // Entity yang akan dimuat dalam level.
     protected StepPoint stepPoint;
     protected Map map;                  // Level memiliki class Map yang dapat digunakan sebagai koordinat bagi semua GameObject
     [SerializeField] protected int point, M;
 
     public virtual void Start()
     {
-        player = Resources.Load("Prefabs/Player_Placeholder", typeof(Entity)) as Entity;
-        pocong = Resources.Load("Prefabs/Pocong_Placeholder", typeof(Entity)) as Entity;
+        player = Resources.Load("Prefabs/Player", typeof(Entity)) as Entity;
+        pocong = Resources.Load("Prefabs/Pocong", typeof(Entity)) as Entity;
+        suster = Resources.Load("Prefabs/Suster", typeof(Entity)) as Entity;
         stepPoint = Resources.Load("Prefabs/Step_Point", typeof(StepPoint)) as StepPoint;
     }
 
@@ -62,6 +63,15 @@ public abstract class Level : MonoBehaviour
               y = (index / M) + 0.5f;
 
         Entity instance = Instantiate(pocong, new Vector3(x, y, 0.0f), Quaternion.identity);
+        instance.setLevelMap(map);
+    }
+
+    protected void spawnSuster(int index)
+    {
+        float x = (index % M) + 0.5f,
+              y = (index / M) + 0.5f;
+
+        Entity instance = Instantiate(suster, new Vector3(x, y, 0.0f), Quaternion.identity);
         instance.setLevelMap(map);
     }
 

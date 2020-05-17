@@ -8,8 +8,37 @@ public class Level2 : Level
     {
         base.Start();
         createMap(18, 20);
-        shapeMap();
+        shapeMap();        
+        point = 17;
         spawnPlayer(0);
+        spawnPocong(13);
+        spawnPocong(82);
+        spawnPocong(111);
+        spawnPocong(204);
+        spawnPocong(208);
+        spawnPocong(214);
+        spawnPocong(324);
+        spawnPocong(354);
+        spawnSuster(70);
+        spawnSuster(298);
+        spawnSuster(342);
+        spawnStepPoint(2, this);
+        spawnStepPoint(6, this);
+        spawnStepPoint(10, this);
+        spawnStepPoint(32, this);
+        spawnStepPoint(77, this);
+        spawnStepPoint(81, this);
+        spawnStepPoint(128, this);
+        spawnStepPoint(140, this);
+        spawnStepPoint(152, this);
+        spawnStepPoint(181, this);
+        spawnStepPoint(224, this);
+        spawnStepPoint(230, this);
+        spawnStepPoint(238, this);
+        spawnStepPoint(290, this);
+        spawnStepPoint(297, this);
+        spawnStepPoint(301, this);
+        spawnStepPoint(310, this);
     }
 
     private void shapeMap()

@@ -25,7 +25,10 @@ public class Cursor : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Return))
         {
-            GameManager.changeScene(2);
+            if (choice == 1)
+                GameManager.changeScene(2);
+            else
+                GameManager.closeGame();
             return;
         }
 
