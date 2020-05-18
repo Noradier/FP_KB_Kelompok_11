@@ -21,6 +21,6 @@ public abstract class Enemy : Entity
         if (collision.tag != "Player")
             return;
 
-        GameManager.changeScene(5);
+        GameManager.changeScene(4);
     }
 }

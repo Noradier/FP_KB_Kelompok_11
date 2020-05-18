@@ -105,6 +105,6 @@ public class Level3 : Level
     {
         base.decreasePoint();
         if (point < 1)
-            GameManager.changeScene(6);
+            GameManager.changeScene(5);
     }
 }
